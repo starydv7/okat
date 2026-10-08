@@ -20,7 +20,7 @@ const points = ['Cruelty free cows', 'Open grazing farms', 'No preservatives, no
 export function Home() {
   useTitle('Okat — India’s Finest Desi Cow Ghee')
   const [storyOpen, setStoryOpen] = useState(false)
-  const premium = products[0]
+  const elite = products.find((item) => item.id === 'elite-1l')!
 
   return (
     <>
@@ -47,8 +47,8 @@ export function Home() {
               ))}
             </ul>
             <div className="hero-actions">
-              <Link to={`/product/${premium.slug}`} className="btn btn-forest">
-                Shop Premium Ghee
+              <Link to={`/product/${elite.slug}`} className="btn btn-forest">
+                Shop Elite Ghee
               </Link>
               <a href="#essentials" className="btn btn-hero-line">
                 Explore Products
@@ -82,8 +82,8 @@ export function Home() {
 
       <section className="section">
         <div className="container feature-grid">
-          <Feature productId="premium-a2" tone="premium" />
-          <Feature productId="standard-ghee" tone="standard" />
+          <Feature productId="elite-1l" tone="premium" />
+          <Feature productId="standard-1l" tone="standard" />
         </div>
       </section>
 
@@ -92,7 +92,7 @@ export function Home() {
           <div className="section-head">
             <div>
               <h2>Our Dairy Essentials</h2>
-              <p className="lede">Fresh, natural and nutritious dairy products for your family.</p>
+              <p className="lede">Elite and Standard ghee in every size, with paneer, lassi and chaach.</p>
             </div>
             <Link to="/shop" className="text-link">
               View all products <Icon name="arrow" size={16} />
@@ -116,9 +116,9 @@ export function Home() {
               <div className="bulk-offers">
                 <article className="bulk-card">
                   <span className="off">10% off</span>
-                  <h3>Premium Ghee bulk orders</h3>
+                  <h3>Elite Ghee bulk orders</h3>
                   <ul>
-                    <li>5 kg, 10 kg, 20 kg</li>
+                    <li>5 L, 10 L, 50 L</li>
                     <li>Farm-grade, slow cultured</li>
                     <li>Pan-India delivery</li>
                   </ul>
@@ -130,7 +130,7 @@ export function Home() {
                   <span className="off">5% off</span>
                   <h3>Standard Ghee bulk orders</h3>
                   <ul>
-                    <li>5 kg, 10 kg, 20 kg</li>
+                    <li>5 L, 10 L, 50 L</li>
                     <li>Packed for daily service</li>
                     <li>Steady supply for long orders</li>
                   </ul>
@@ -300,7 +300,7 @@ function Feature({ productId, tone }: { productId: string; tone: 'premium' | 'st
     <article className={tone === 'premium' ? 'feature' : 'feature alt'}>
       <div className={`jar-art ${tone}`}>
         <img
-          src={tone === 'premium' ? '/images/feature-premium.jpg' : '/images/feature-standard.jpg'}
+          src={product.image}
           alt={product.name}
           decoding="async"
         />
@@ -327,7 +327,7 @@ function Feature({ productId, tone }: { productId: string; tone: 'premium' | 'st
           </p>
         )}
         <Link to={`/product/${product.slug}`} className="btn btn-gold">
-          {tone === 'premium' ? 'Shop Premium' : 'Shop Standard'}
+          {tone === 'premium' ? 'Shop Elite' : 'Shop Standard'}
           <Icon name="arrow" size={16} />
         </Link>
       </div>

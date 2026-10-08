@@ -35,69 +35,60 @@ export type Post = {
   paragraphs: string[]
 }
 
+const eliteSizes: Size[] = [
+  { id: '500', label: '500 ml', price: 1349 },
+  { id: '1l', label: '1 L', price: 2499 },
+  { id: '2l', label: '2 L', price: 4799 },
+  { id: '5l', label: '5 L', price: 12495 },
+  { id: '10l', label: '10 L', price: 24990 },
+  { id: '50l', label: '50 L', price: 124950 },
+]
+
+const standardSizes: Size[] = [
+  { id: '500', label: '500 ml', price: 949 },
+  { id: '1l', label: '1 L', price: 1799 },
+  { id: '2l', label: '2 L', price: 3499 },
+  { id: '5l', label: '5 L', price: 8995 },
+  { id: '10l', label: '10 L', price: 17990 },
+  { id: '50l', label: '50 L', price: 89950 },
+]
+
+function gheeJar(line: 'elite' | 'standard', size: Size): Product {
+  const elite = line === 'elite'
+  const tin = size.id === '50l'
+  return {
+    id: `${line}-${size.id}`,
+    slug: `${line}-ghee-${size.id}`,
+    name: `${elite ? 'Elite' : 'Standard'} Ghee · ${size.label}`,
+    short: elite
+      ? 'Bilona ghee in the dark green and gold jar, for the table you are proud of.'
+      : 'The everyday jar: cream label, gold lid, same farms.',
+    description: elite
+      ? 'Elite ghee is bilona ghee from the morning milk of indigenous cows that graze in the open. The curd is set slowly, the butter is churned by hand, and the ghee is clarified until the colour turns deep gold. The pack is the dark green label with gold lettering.'
+      : 'Standard ghee comes from the same farms: desi cow milk, cultured and cooked the slow way, without preservatives. The pack is the cream label with the gold lid.',
+    category: 'ghee',
+    badge: elite ? 'Elite' : 'Standard',
+    image: `/images/${line}-${size.id}.jpg`,
+    gallery: [`/images/${line}-${size.id}.jpg`, '/images/ghee-pour.jpg', elite ? '/images/bilona-wood.jpg' : '/images/farm-morning.jpg'],
+    sizes: [size],
+    highlights: elite
+      ? ['A2 milk from indigenous cows', 'Traditional bilona method', 'Dark green label, gold lettering', 'Slow-cultured in small batches']
+      : ['Pure desi cow milk', 'Traditional slow method', 'Cream label, gold lid', 'A daily jar at a fair price'],
+    shipping: tin ? 'Ships across India as a sealed catering tin.' : 'Ships across India in a sealed jar.',
+    facts: [
+      { label: 'Pack', value: size.label },
+      { label: 'Method', value: elite ? 'Bilona, small batch' : 'Slow cultured' },
+      { label: 'Additives', value: 'None' },
+      { label: 'Best for', value: tin ? 'Kitchens, sweet shops, hotels' : 'Everyday cooking and finishing' },
+    ],
+    rating: elite ? 4.9 : 4.8,
+    reviewCount: elite ? 128 : 96,
+  }
+}
+
 export const products: Product[] = [
-  {
-    id: 'premium-a2',
-    slug: 'premium-a2-desi-cow-ghee',
-    name: 'Premium A2 Desi Cow Ghee',
-    short: 'For those who want the very best.',
-    description:
-      'Our premium jar is bilona ghee from the morning milk of indigenous cows that graze in the open. The curd is set slowly, the butter is churned by hand, and the ghee is clarified until the colour turns deep gold and the aroma fills the kitchen.',
-    category: 'ghee',
-    badge: 'Premium',
-    image: '/images/jar-premium.jpg',
-    gallery: ['/images/jar-premium.jpg', '/images/ghee-pour.jpg', '/images/bilona-wood.jpg'],
-    sizes: [
-      { id: '1kg', label: '1 kg', price: 2499 },
-      { id: '500g', label: '500 g', price: 1349 },
-    ],
-    highlights: [
-      'A2 milk from indigenous cows',
-      'Traditional bilona method',
-      'Rich aroma, deep golden colour',
-      'Slow-cultured in small batches',
-    ],
-    shipping: 'Ships across India in a sealed jar.',
-    facts: [
-      { label: 'Method', value: 'Bilona, small batch' },
-      { label: 'Milk', value: 'Desi cow, open grazing' },
-      { label: 'Additives', value: 'None' },
-      { label: 'Best for', value: 'Everyday cooking and finishing' },
-    ],
-    rating: 4.9,
-    reviewCount: 128,
-  },
-  {
-    id: 'standard-ghee',
-    slug: 'standard-desi-cow-ghee',
-    name: 'Standard Desi Cow Ghee',
-    short: 'Pure, fragrant, and perfect for everyday cooking.',
-    description:
-      'The everyday jar from the same farms: desi cow milk, cultured and cooked the slow way, without preservatives. It is the ghee we pack for families who want a clean, golden fat on the table every day.',
-    category: 'ghee',
-    badge: 'Standard',
-    image: '/images/jar-standard.jpg',
-    gallery: ['/images/jar-standard.jpg', '/images/ghee-pour.jpg', '/images/farm-morning.jpg'],
-    sizes: [
-      { id: '1kg', label: '1 kg', price: 1799 },
-      { id: '500g', label: '500 g', price: 949 },
-    ],
-    highlights: [
-      'Pure desi cow milk',
-      'Traditional slow method',
-      'Clean taste, golden grain',
-      'A daily jar at a fair price',
-    ],
-    shipping: 'Ships across India in a sealed jar.',
-    facts: [
-      { label: 'Method', value: 'Slow cultured' },
-      { label: 'Milk', value: 'Desi cow' },
-      { label: 'Additives', value: 'None' },
-      { label: 'Best for', value: 'Dal, rotis, tadka, sweets' },
-    ],
-    rating: 4.8,
-    reviewCount: 96,
-  },
+  ...eliteSizes.map((size) => gheeJar('elite', size)),
+  ...standardSizes.map((size) => gheeJar('standard', size)),
   {
     id: 'paneer',
     slug: 'fresh-paneer',
@@ -125,50 +116,27 @@ export const products: Product[] = [
     reviewCount: 54,
   },
   {
-    id: 'milk',
-    slug: 'a2-cow-milk',
-    name: 'A2 Cow Milk',
-    short: 'Fresh milk from pasture-grazed desi cows.',
+    id: 'chaach',
+    slug: 'village-chaach',
+    name: 'Village Chaach',
+    short: 'Thin, salted buttermilk with roasted cumin.',
     description:
-      'Whole milk from the morning milking, bottled for homes that still want milk to taste like milk. Gentle, creamy, and meant to be boiled the way your kitchen already does.',
+      'Chaach churned from the day’s curd, thinned with water, and finished with roasted cumin. It is the drink that follows a heavy lunch — cool, savoury, and lightly spiced.',
     category: 'fresh',
     badge: 'Farm Fresh',
-    image: '/images/milk.jpg',
-    gallery: ['/images/milk.jpg'],
-    sizes: [{ id: '1l', label: '1 L', price: 90 }],
-    highlights: ['Morning milk', 'From open-grazing cows', 'No reconstitution', 'Bottled for the day'],
+    image: '/images/chaach.jpg',
+    gallery: ['/images/chaach.jpg'],
+    sizes: [{ id: '250ml', label: '250 ml', price: 40 }],
+    highlights: ['Churned from fresh curd', 'Salted, with roasted cumin', 'No syrup', 'Best drunk cold'],
     shipping: 'City delivery. Packed cold the morning it leaves.',
     facts: [
-      { label: 'Fat', value: 'Whole milk' },
-      { label: 'Source', value: 'Desi cow' },
-      { label: 'Packed', value: 'Same morning' },
-      { label: 'Keep', value: 'Boil and refrigerate' },
-    ],
-    rating: 4.8,
-    reviewCount: 73,
-  },
-  {
-    id: 'curd',
-    slug: 'natural-curd',
-    name: 'Natural Curd',
-    short: 'Set curd with a clean, mild tang.',
-    description:
-      'Dahi set from our own milk and a live culture we keep in the dairy. Thick enough to hold on a plate, mild enough for the afternoon meal.',
-    category: 'fresh',
-    badge: 'Farm Fresh',
-    image: '/images/curd.jpg',
-    gallery: ['/images/curd.jpg'],
-    sizes: [{ id: '400g', label: '400 g', price: 80 }],
-    highlights: ['Set, not stirred thin', 'Live culture', 'No thickeners', 'Mild and fresh'],
-    shipping: 'City delivery. Packed cold the morning it leaves.',
-    facts: [
-      { label: 'Style', value: 'Set dahi' },
-      { label: 'Culture', value: 'Dairy’s own' },
+      { label: 'Style', value: 'Salted chaach' },
+      { label: 'Base', value: 'Fresh curd' },
       { label: 'Packed', value: 'Same morning' },
       { label: 'Keep', value: 'Refrigerated' },
     ],
-    rating: 4.7,
-    reviewCount: 41,
+    rating: 4.6,
+    reviewCount: 28,
   },
   {
     id: 'lassi',

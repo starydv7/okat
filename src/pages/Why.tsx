@@ -34,19 +34,19 @@ export function Why() {
         <div>
           <h2>Two jars, one standard</h2>
           <p>
-            Premium is the bilona jar: deeper colour, the batch we are proudest of. Standard is the everyday jar from the same farms, cultured and cooked clean, priced for the pot of dal you make tonight.
+            Elite is the bilona jar: dark green label, gold lettering, the batch we are proudest of. Standard is the everyday jar from the same farms, cream label and gold lid, cultured and cooked clean, priced for the pot of dal you make tonight.
           </p>
           <p>Neither jar has preservatives. If a batch does not smell right on the flame, it does not get a label.</p>
           <div className="hero-actions">
-            <Link to="/product/premium-a2-desi-cow-ghee" className="btn btn-gold">
-              Shop premium
+            <Link to="/product/elite-ghee-1l" className="btn btn-gold">
+              Shop Elite
             </Link>
-            <Link to="/product/standard-desi-cow-ghee" className="btn btn-line">
-              Shop standard
+            <Link to="/product/standard-ghee-1l" className="btn btn-line">
+              Shop Standard
             </Link>
           </div>
         </div>
-        <img src="/images/jar-premium.jpg" alt="Jar of premium Okat ghee" />
+        <img src="/images/elite-1l.jpg" alt="Jar of Okat Elite ghee" />
       </section>
     </>
   )

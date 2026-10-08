@@ -97,7 +97,7 @@ export function ProductPage() {
           </div>
           {product.category === 'ghee' && (
             <p className="note">
-              {product.id === 'premium-a2' ? '10%' : '5%'} off when this ghee in your cart reaches 5 kg.
+              {product.id.startsWith('elite') ? '10%' : '5%'} off when this line of ghee in your cart reaches 5 litres.
             </p>
           )}
           <ul className="ticks">

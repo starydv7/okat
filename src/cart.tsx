@@ -8,7 +8,7 @@ import {
   type ReactNode,
 } from 'react'
 import { products, type Product, type Size } from './data'
-import { discountRate, sizeToKg } from './lib'
+import { discountRate, gheeFamily, sizeToKg } from './lib'
 
 export type CartLine = {
   key: string
@@ -62,14 +62,15 @@ function enrich(lines: CartLine[]): EnrichedLine[] {
     const product = products.find((item) => item.id === line.productId)
     const size = product?.sizes.find((item) => item.id === line.sizeId)
     if (!product || !size) continue
-    kgByProduct.set(product.id, (kgByProduct.get(product.id) ?? 0) + sizeToKg(size.label) * line.qty)
+    const family = gheeFamily(product.id)
+    kgByProduct.set(family, (kgByProduct.get(family) ?? 0) + sizeToKg(size.label) * line.qty)
   }
 
   return lines.flatMap((line) => {
     const product = products.find((item) => item.id === line.productId)
     const size = product?.sizes.find((item) => item.id === line.sizeId)
     if (!product || !size) return []
-    const rate = discountRate(product.id, kgByProduct.get(product.id) ?? 0)
+    const rate = discountRate(product.id, kgByProduct.get(gheeFamily(product.id)) ?? 0)
     const gross = size.price * line.qty
     const savings = Math.round(gross * rate)
     return [{ ...line, product, size, rate, gross, savings, total: gross - savings }]

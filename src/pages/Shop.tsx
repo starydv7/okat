@@ -42,7 +42,7 @@ export function Shop() {
         <div className="container">
           <p className="eyebrow dark">The shelf</p>
           <h1>Dairy, packed the slow way</h1>
-          <p className="lede">Ghee for the pantry. Milk, curd, paneer and lassi for the day.</p>
+          <p className="lede">Elite and Standard ghee, from 500 ml to 50 L. Paneer, lassi and chaach for the day.</p>
         </div>
       </header>
       <div className="container shop-bar">

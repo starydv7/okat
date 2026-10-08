@@ -9,18 +9,18 @@ export type PartnerProduct = {
 export const partnerProgram = {
   products: [
     {
-      id: 'premium-a2',
-      name: 'Premium Ghee',
+      id: 'elite-1l',
+      name: 'Elite Ghee',
       pricePerKg: 2499,
       commissionRate: 0.05,
-      image: '/images/jar-premium.jpg',
+      image: '/images/elite-1l.jpg',
     },
     {
-      id: 'standard-ghee',
+      id: 'standard-1l',
       name: 'Standard Ghee',
       pricePerKg: 1799,
       commissionRate: 0.05,
-      image: '/images/jar-standard.jpg',
+      image: '/images/standard-1l.jpg',
     },
   ] satisfies PartnerProduct[],
   quantities: [1, 5, 10, 25, 50],

@@ -69,7 +69,7 @@ export function CartPage() {
               <span>To pay</span>
               <strong>{inr(cart.total)}</strong>
             </p>
-            {fresh && <p className="note">Fresh paneer, milk, curd and lassi are packed for city delivery. Ghee ships across India.</p>}
+            {fresh && <p className="note">Fresh paneer, lassi and chaach are packed for city delivery. Ghee ships across India.</p>}
             <Link to="/checkout" className="btn btn-gold">
               Checkout
             </Link>

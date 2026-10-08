@@ -18,9 +18,15 @@ export function sizeToKg(label: string) {
   return 0
 }
 
-export function discountRate(productId: string, kg: number) {
-  if (kg < 5) return 0
-  if (productId === 'premium-a2') return 0.1
-  if (productId === 'standard-ghee') return 0.05
+export function gheeFamily(productId: string) {
+  if (productId.startsWith('elite')) return 'elite'
+  if (productId.startsWith('standard')) return 'standard'
+  return productId
+}
+
+export function discountRate(productId: string, litres: number) {
+  if (litres < 5) return 0
+  if (productId.startsWith('elite')) return 0.1
+  if (productId.startsWith('standard')) return 0.05
   return 0
 }

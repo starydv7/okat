@@ -81,13 +81,23 @@ export function Partner() {
         <div className="pn-steps">
           <article className="pn-step">
             <div className="pn-step-visual">
-              <div className="phone">
-                <div className="phone-screen">
-                  <strong>Join Okat</strong>
-                  <div className="phone-row"><span>Name</span><span>Your name</span></div>
-                  <div className="phone-row"><span>Mobile</span><span>10 digits</span></div>
-                  <div className="phone-row"><span>City</span><span>India</span></div>
-                  <p style={{ marginTop: 10 }}>Partner ID issued free.</p>
+              <div className="device compact">
+                <div className="device-screen">
+                  <div className="device-status">
+                    <span>9:41</span>
+                    <span className="device-island" />
+                    <span>5G</span>
+                  </div>
+                  <p className="device-app">Okat Partner</p>
+                  <h3>Join free</h3>
+                  <div className="device-fields">
+                    <div><span>Name</span><b>Your name</b></div>
+                    <div><span>Mobile</span><b>10-digit number</b></div>
+                    <div><span>Email</span><b>you@email.com</b></div>
+                    <div><span>City</span><b>Your city</b></div>
+                  </div>
+                  <p className="device-cta">Create account</p>
+                  <p className="device-note">Partner ID issued free. No fee.</p>
                 </div>
               </div>
             </div>
@@ -123,7 +133,7 @@ export function Partner() {
           <span className="pn-arrow" aria-hidden>→</span>
           <article className="pn-step">
             <div className="pn-step-visual">
-              <img src="/images/jar-premium.jpg" alt="Okat premium ghee jar" style={{ objectFit: 'contain', background: '#f4eee6' }} />
+              <img src="/images/elite-1l.jpg" alt="Okat premium ghee jar" style={{ objectFit: 'contain', background: '#f4eee6' }} />
             </div>
             <div className="pn-step-body">
               <p className="pn-num">03</p>
@@ -201,7 +211,7 @@ export function Partner() {
               <p>{item.reward}</p>
               <p className="pn-sub">{item.note}</p>
               <div className="pn-progress" aria-hidden><span style={{ width: `${Math.min(100, item.kg * 2)}%` }} /></div>
-              <img src="/images/jar-premium.jpg" alt="" />
+              <img src="/images/elite-1l.jpg" alt="" />
             </article>
           ))}
         </div>
@@ -243,14 +253,52 @@ export function Partner() {
         <div className="pn-kit">
           <p className="pn-eyebrow light">Partner toolkit</p>
           <h2>Everything You Need to Succeed</h2>
-          <div className="phone">
-            <div className="phone-screen">
-              <strong>Okat toolkit</strong>
-              <div className="phone-row"><span>Referral link</span><span>Copy</span></div>
-              <div className="phone-row"><span>WhatsApp templates</span><span>Ready</span></div>
-              <div className="phone-row"><span>Marketing assets</span><span>Share</span></div>
-              <div className="phone-row"><span>Product catalogue</span><span>Open</span></div>
-              <div className="phone-row"><span>Business lead form</span><span>Track</span></div>
+          <div className="device" aria-hidden="true">
+            <div className="device-screen">
+              <div className="device-status">
+                <span>9:41</span>
+                <span className="device-island" />
+                <span>5G</span>
+              </div>
+              <p className="device-app">Okat Partner</p>
+              <h3>Toolkit</h3>
+              <ul className="device-list">
+                <li>
+                  <span>Link</span>
+                  <div>
+                    <strong>Referral link</strong>
+                    <small>Copy and share instantly</small>
+                  </div>
+                </li>
+                <li>
+                  <span>Chat</span>
+                  <div>
+                    <strong>WhatsApp templates</strong>
+                    <small>Ready-to-send messages</small>
+                  </div>
+                </li>
+                <li>
+                  <span>Post</span>
+                  <div>
+                    <strong>Marketing assets</strong>
+                    <small>Images and social posts</small>
+                  </div>
+                </li>
+                <li>
+                  <span>Shop</span>
+                  <div>
+                    <strong>Product catalogue</strong>
+                    <small>Share Okat products</small>
+                  </div>
+                </li>
+                <li>
+                  <span>Lead</span>
+                  <div>
+                    <strong>Business lead form</strong>
+                    <small>Submit and track B2B</small>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -299,7 +347,7 @@ export function Partner() {
       <section className="pn-close">
         <img className="bg" src="/images/cows-pasture.jpg" alt="" />
         <div className="shade" />
-        <img className="pn-jar-float" src="/images/jar-premium.jpg" alt="Okat premium ghee" />
+        <img className="pn-jar-float" src="/images/elite-1l.jpg" alt="Okat premium ghee" />
         <div className="pn-close-copy">
           <h2>Your Network Has Value.</h2>
           <p>Recommend Okat. Build customers. Bring businesses. Earn from eligible Okat sales.</p>

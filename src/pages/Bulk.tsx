@@ -9,7 +9,7 @@ import { useTitle } from '../useTitle'
 export function Bulk() {
   useTitle('Bulk Orders · Okat')
   const [params] = useSearchParams()
-  const initial = params.get('jar') === 'standard' ? 'standard-ghee' : 'premium-a2'
+  const initial = params.get('jar') === 'standard' ? 'standard-1l' : 'elite-1l'
   const [productId, setProductId] = useState(initial)
   const [kg, setKg] = useState(10)
   const [sent, setSent] = useState(false)
@@ -43,12 +43,12 @@ export function Bulk() {
           <label>
             Jar
             <select value={product.id} onChange={(event) => setProductId(event.target.value)}>
-              <option value="premium-a2">Premium A2 · 10% from 5 kg</option>
-              <option value="standard-ghee">Standard · 5% from 5 kg</option>
+              <option value="elite-1l">Elite · 10% from 5 L</option>
+              <option value="standard-1l">Standard · 5% from 5 L</option>
             </select>
           </label>
           <label>
-            Kilograms
+            Litres
             <input
               type="number"
               min={1}
@@ -64,7 +64,7 @@ export function Bulk() {
             <span>{inr(quote.gross)}</span>
           </p>
           <p>
-            <span>Bulk rate {quote.rate ? `${quote.rate * 100}%` : 'starts at 5 kg'}</span>
+            <span>Bulk rate {quote.rate ? `${quote.rate * 100}%` : 'starts at 5 L'}</span>
             <span>{quote.savings ? `− ${inr(quote.savings)}` : '—'}</span>
           </p>
           <p className="total-line">
@@ -72,9 +72,9 @@ export function Bulk() {
             <strong>{inr(quote.total)}</strong>
           </p>
           <button className="btn btn-gold" type="button" onClick={() => add(product, size, kg)}>
-            Add {kg} kg to cart
+            Add {kg} L to cart
           </button>
-          <p className="note">Each kilogram is a 1 kg jar. The saving is applied in the cart from 5 kg of the same ghee.</p>
+          <p className="note">Each litre is priced as the 1 L jar. The saving is applied in the cart from 5 litres of the same line.</p>
         </div>
         <form className="form-card" onSubmit={enquire}>
           <h2>Ask the dairy desk</h2>

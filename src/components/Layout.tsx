@@ -73,7 +73,7 @@ export function Layout() {
               name="q"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search for ghee, paneer, milk"
+              placeholder="Search for ghee, paneer, lassi"
               aria-label="Search products"
             />
           </form>
@@ -156,8 +156,8 @@ export function Layout() {
           <div>
             <h2>Shop</h2>
             <Link to="/shop">All products</Link>
-            <Link to="/product/premium-a2-desi-cow-ghee">Premium ghee</Link>
-            <Link to="/product/standard-desi-cow-ghee">Standard ghee</Link>
+            <Link to="/product/elite-ghee-1l">Elite ghee</Link>
+            <Link to="/product/standard-ghee-1l">Standard ghee</Link>
             <Link to="/bulk">Bulk orders</Link>
           </div>
           <div>
